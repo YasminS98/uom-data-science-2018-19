@@ -14,10 +14,11 @@
 # 1. Install and load libraries ----
 
 # Installing R packages
-install.packages("tidyverse")
+# install.packages("tidyverse")
 
 # Loading R packages
 library("tidyverse")
+library("skimr")
 
 # Tasks: 
 # How would I install the skimr package? 
@@ -30,7 +31,6 @@ library("tidyverse")
 raw_data <- readr::read_csv("data/passenger_data.csv")
 
 # This is equivilant but we don't use this! 
-readr::read_csv("data/passenger_data.csv") -> raw_data 
 
 # Quick glance at the data
 
@@ -43,16 +43,22 @@ skimr::skim(raw_data)
 
 # Selecting columns 
 
-raw_data %>%
-  dplyr::select()
+selected_data_1 <- raw_data %>%
+  dplyr::select(Age)
 
 # Task:
 
 # i. Select Age and Sex columns only 
+selected_data_2 <- raw_data %>%
+  dplyr::select(Age, Sex)
 
 # ii. Select all data apart from the Survived column
+selected_data_2 <- raw_data %>%
+  dplyr::select(-Survived)
 
 # iii. Select the first three variables using numeric 
+selected_data_3 <- raw_data %>%
+  dplyr::select(1:3)
 
 # Filtering data
 
